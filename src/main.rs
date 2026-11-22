@@ -85,7 +85,26 @@ enum UserEvent {
 struct IpcMsg {
     cmd: String,
     #[serde(default)]
-    value: Option<String>,
+    value: Option<serde_json::Value>,
+}
+
+impl IpcMsg {
+    /// The payload as a string, whatever JSON type the page sent.
+    fn value_str(&self) -> Option<String> {
+        match self.value.as_ref()? {
+            serde_json::Value::String(s) => Some(s.clone()),
+            other => Some(other.to_string()),
+        }
+    }
+
+    /// The payload as a bool, accepting both JSON booleans and "true"/"false".
+    fn value_bool(&self) -> Option<bool> {
+        match self.value.as_ref()? {
+            serde_json::Value::Bool(b) => Some(*b),
+            serde_json::Value::String(s) => Some(s == "true"),
+            _ => None,
+        }
+    }
 }
 
 struct App {
@@ -205,14 +224,14 @@ impl App {
         match msg.cmd.as_str() {
             "hello" => self.dirty = true,
             "set_process" => {
-                if let Some(v) = msg.value {
+                if let Some(v) = msg.value_str() {
                     self.process_name = v;
                 }
             }
             "pick_dll" => self.pick_dll(window),
             "inject" => self.manual_inject(proxy),
             "set_auto" => {
-                let on = msg.value.as_deref() == Some("true");
+                let on = msg.value_bool().unwrap_or(false);
                 if on != self.auto {
                     self.auto = on;
                     if on {
