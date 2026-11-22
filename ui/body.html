@@ -1,0 +1,32 @@
+<main class="shell">
+  <header class="mast">
+    <h1>Tricky Injector</h1>
+    <p class="lead">LoadLibrary injector for Minecraft Bedrock (GDK)</p>
+  </header>
+
+  <section class="glass" aria-label="Injection settings">
+    <div class="row">
+      <label class="label" for="process">Process</label>
+      <input id="process" class="field num" type="text" value="Minecraft.Windows.exe" spellcheck="false" autocomplete="off" />
+    </div>
+    <div class="row">
+      <span class="label" id="dll-label">DLL</span>
+      <div class="dll">
+        <span id="dll-name" class="dll-name muted">no DLL selected</span>
+        <button id="browse" class="btn ghost" type="button">Browse…</button>
+      </div>
+    </div>
+    <div class="row actions">
+      <button id="inject" class="btn" type="button" aria-busy="false" disabled>Inject</button>
+      <label class="switch">
+        <input type="checkbox" id="auto" />
+        <span class="track"><span class="knob"></span></span>
+        <span class="switch-label">Auto-inject, checks every 5 sec</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="status" aria-live="polite">
+    <p class="status-line wait" id="proc-status">Scanning for process…</p>
+  </section>
+</main>

@@ -1,0 +1,7 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: Dusk (by request)
+ * nav: single pane, no chrome · signature: none, one glass pane of controls · states: default, hover, focus-visible, active, disabled, loading, empty, error, full
+ * dusk: no-hero / periwinkle-apricot / glass · axes: dark/grotesk-sans/cool · posture: committed · surface: absolute · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S3 R5 V3 · weakest: S, a settings pane and a status line is as spare as a tool gets; the smoked glass panel with its lit edge carries the identity */
+/* Hallmark · waive 7b · --color-light never paints a background or border on its own · it only feeds the color-mix that paints row rules, field borders and glass fills */
+/* Hallmark · waive 22 · the visible neutrals are the paper, ink and muted tokens with chroma 0.006 to 0.017, the pure white never renders on its own · a 100 percent stop serves as the theme's mixing anchor */
+/* The glass panel is the theme's prescribed product surface (dusk.md Surfaces) */

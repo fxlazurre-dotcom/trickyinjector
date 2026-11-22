@@ -1,0 +1,26 @@
+[package]
+name = "tricky-injector"
+version = "0.1.0"
+edition = "2021"
+description = "LoadLibrary injector for Minecraft Bedrock (GDK)"
+
+[dependencies]
+wry = "0.57"
+tao = "0.37"
+raw-window-handle = "0.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_System_Memory",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Diagnostics_Debug",
+    "Win32_System_LibraryLoader",
+    "Win32_UI_Controls_Dialogs",
+] }
+
+[profile.release]
+lto = "thin"
+strip = true
